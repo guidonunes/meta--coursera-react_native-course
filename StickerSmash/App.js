@@ -11,7 +11,7 @@ const PlaceholderImage = require('./assets/images/background-image.png');
 
 export default function App() {
 const [selectedImage, setSelectedImage] = useState(null);
-const [showAppOptions, setShowOptions] = useState(false);
+const [showAppOptions, setShowAppOptions] = useState(false);
 
 
 const pickImageAsync = async () => {
@@ -22,6 +22,7 @@ const pickImageAsync = async () => {
 
   if(!result.canceled) {
     setSelectedImage(result.assets[0].uri);
+    setShowAppOptions(true);
   }else {
     alert('You did not select any image.');
   }
