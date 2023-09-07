@@ -11,6 +11,7 @@ const PlaceholderImage = require('./assets/images/background-image.png');
 
 export default function App() {
 const [selectedImage, setSelectedImage] = useState(null);
+const [showAppOptions, setShowOptions] = useState(false);
 
 
 const pickImageAsync = async () => {
