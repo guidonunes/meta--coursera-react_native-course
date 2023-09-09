@@ -34,17 +34,21 @@ const pickImageAsync = async () => {
       <View style={styles.imageContainer}>
       <ImageViewer 
         placeholderImageSource={PlaceholderImage} 
-        selectedImage={selectedImage}
+        selectedImage={selectedImage}  
       />
-      </View>
+      {showAppOptions ? (
+        <View />
+      ) : (
       <View style={styles.footerContainer}>
         <Button  theme= "primary" label="Choose a photo"  onPress={pickImageAsync}/>
         <Button label="Use this photo" onPress={() => setShowAppOptions(true)}/>
       </View>
+      )}
       <StatusBar style="auto" />
     </View>
   );
-}
+
+  }
 
 const styles = StyleSheet.create({
   container: {
