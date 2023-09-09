@@ -20,9 +20,12 @@ const onReset = () => {
 };
 
 const onAddSticker = () => {
-  
+  // we will implement this later
 }
 
+const onSaveImageAsync = async () => {
+  // we will implement this later
+}
 
 
 const pickImageAsync = async () => {
