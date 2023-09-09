@@ -53,11 +53,11 @@ const pickImageAsync = async () => {
       {showAppOptions ? (
         <View />
       ) : (
-      <View style={styles.footerContainer}>
-        <Button  theme= "primary" label="Choose a photo"  onPress={pickImageAsync}/>
-        <Button label="Use this photo" onPress={() => setShowAppOptions(true)}/>
+        <View style={styles.footerContainer}>
+        <Button theme="primary" label="Choose a photo" onPress={pickImageAsync} />
+        <Button label="Use this photo" onPress={() => setShowAppOptions(true)} />
       </View>
-      )}
+    )}
       <StatusBar style="auto" />
     </View>
   );
