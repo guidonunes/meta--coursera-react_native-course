@@ -19,6 +19,10 @@ const onReset = () => {
   setShowAppOptions(false);
 };
 
+const onAddSticker = () => {
+  
+}
+
 
 
 const pickImageAsync = async () => {
