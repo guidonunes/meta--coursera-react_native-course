@@ -39,5 +39,18 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+    },
+    title: {
+        color: '#fff',
+        fontSize: 16,
+    }, 
+    pickerContainer: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingHorizontal: 50, 
+        paddingVertical: 20,
     }
-})
+});
+
+// import component in the App.js file
