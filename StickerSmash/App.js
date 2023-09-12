@@ -8,10 +8,12 @@ import Button from './components/Button';
 import ImageViewer from './components/ImageViewer';
 import CircleButton from './components/CircleButton';
 import IconButton from './components/IconButton';
+import EmojiPicker from './components/EmojiPicker';
 
 const PlaceholderImage = require('./assets/images/background-image.png');
 
 export default function App() {
+const [isModalVisible, setIsModalVisible] = useState(false);
 const [selectedImage, setSelectedImage] = useState(null);
 const [showAppOptions, setShowAppOptions] = useState(false);
 
@@ -50,8 +52,14 @@ const pickImageAsync = async () => {
         placeholderImageSource={PlaceholderImage} 
         selectedImage={selectedImage}  
       />
-      {showAppOptions ? (
-        <View />
+     {showAppOptions ? (
+        <View style={styles.optionsContainer}>
+          <View style={styles.optionsRow}>
+            <IconButton icon="refresh" label="Reset" onPress={onReset} />
+            <CircleButton onPress={onAddSticker} />
+            <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
+          </View>
+        </View>
       ) : (
         <View style={styles.footerContainer}>
         <Button theme="primary" label="Choose a photo" onPress={pickImageAsync} />
@@ -86,3 +94,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
