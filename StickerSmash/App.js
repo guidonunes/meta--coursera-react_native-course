@@ -22,8 +22,10 @@ const onReset = () => {
 };
 
 const onAddSticker = () => {
-  // we will implement this later
+  setIsModalVisible(true);
 }
+
+const onModalClose = ()
 
 const onSaveImageAsync = async () => {
   // we will implement this later
