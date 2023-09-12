@@ -53,6 +53,7 @@ const pickImageAsync = async () => {
       <ImageViewer 
         placeholderImageSource={PlaceholderImage} 
         selectedImage={selectedImage}  
+        
       />
      {showAppOptions ? (
         <View style={styles.optionsContainer}>
