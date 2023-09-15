@@ -39,6 +39,10 @@ export default function App() {
     const onAddSticker = () => {
       setIsModalVisible(true);
     };
+
+    const onModalClose = () => {
+      setIsModalVisible(false);
+    }
   
     const onSaveImageAsync = async () => {
       // we will implement this later
@@ -67,6 +71,9 @@ export default function App() {
         <Button label="Use this photo" onPress={()=> setShowAppOptions(true)} />
       </View>
         )}
+        <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
+          
+        </EmojiPicker>
       <StatusBar style="auto" />
     </View>
   );
