@@ -53,4 +53,3 @@ const styles = StyleSheet.create({
     }
 });
 
-// import component in the App.js file
