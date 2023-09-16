@@ -49,16 +49,13 @@ export default function App() {
     };
   
 
-  return (
-    <View style={styles.container}>
-      <View style = {styles.imageContainer}>
-        <ImageViewer 
-        placeholderImageSource={PlaceholderImage} 
-        selectedImage={selectedImage}
-        />
+    return (
+      <View style={styles.container}>
+        <View style={styles.imageContainer}>
+          <ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage} />
         </View>
         {showAppOptions ? (
-         <View style={styles.optionsContainer}> 
+          <View style={styles.optionsContainer}>
             <View style={styles.optionsRow}>
               <IconButton icon="refresh" label="Reset" onPress={onReset} />
               <CircleButton onPress={onAddSticker} />
@@ -66,18 +63,18 @@ export default function App() {
             </View>
           </View>
         ) : (
-      <View style={styles.footerContainer}>
-        <Button theme="primary" label="Choose a photo" onPress={pickImageAsync} />
-        <Button label="Use this photo" onPress={()=> setShowAppOptions(true)} />
-      </View>
+          <View style={styles.footerContainer}>
+            <Button theme="primary" label="Choose a photo" onPress={pickImageAsync} />
+            <Button
+              label="Use this photo"            
+              onPress={() => setShowAppOptions(true)}
+            />
+          </View>
         )}
-        <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
-          
-        </EmojiPicker>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+        <StatusBar style="auto" />
+      </View>
+    );
+  }
 
 const styles = StyleSheet.create({
   container: {
