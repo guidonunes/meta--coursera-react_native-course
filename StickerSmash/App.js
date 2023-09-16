@@ -71,6 +71,9 @@ export default function App() {
             />
           </View>
         )}
+        <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
+          
+        </EmojiPicker>
         <StatusBar style="auto" />
       </View>
     );
