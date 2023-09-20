@@ -1,4 +1,7 @@
 import { View, Image } from 'react-native'; 
+import Animated from 'react-native-reanimated';
+
+const AnimatedImage = Animated.createAnimatedComponent(image);
 
 export default function EmojiSticker ({ imageSize, stickerSource }) {
     return (
