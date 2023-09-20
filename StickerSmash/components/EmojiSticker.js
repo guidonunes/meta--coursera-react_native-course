@@ -1,5 +1,11 @@
-import { View, Image } from 'react-native'; 
-import Animated from 'react-native-reanimated';
+import { View, Image } from 'react-native';
+import { TapGestureHandler } from 'react-native-gesture-handler'; 
+import Animated, {
+    useAnimatedStyle,
+    useSharedValue,
+    useAnimatedGestureHandler,
+    withSpring,
+  } from 'react-native-reanimated';
 
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 
