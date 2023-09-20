@@ -9,6 +9,16 @@ import Animated, {
 
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 
+const scaleImage = useSharedValue(imageSize);
+
+const onDoubleTap = useAnimatedGestureHandler({
+    onActive: () => {
+        if (scaleImage.value !== imageSize * 2) {
+            scaleImage.value = scaleImage.value * 2;
+        }
+    },
+});
+
 export default function EmojiSticker ({ imageSize, stickerSource }) {
     return (
         <View style={{ top: -350 }}>
