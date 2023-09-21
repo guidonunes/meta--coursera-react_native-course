@@ -19,6 +19,13 @@ const onDoubleTap = useAnimatedGestureHandler({
     },
 });
 
+const imageStyle = useAnimatedStyle(() => {
+    return {
+        width: withSpring(scaleImage.value),
+        height: withSpring(scaleImage.value),
+    }
+})
+
 export default function EmojiSticker ({ imageSize, stickerSource }) {
     return (
         <View style={{ top: -350 }}>
