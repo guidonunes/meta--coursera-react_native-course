@@ -29,11 +29,13 @@ const imageStyle = useAnimatedStyle(() => {
 export default function EmojiSticker ({ imageSize, stickerSource }) {
     return (
         <View style={{ top: -350 }}>
+            <TapGestureHandler onGestureEvent={onDoubleTap} numberOfTaps={2}>
             <AnimatedImageImage 
                 source={stickerSource}
                 resizeMode="contain"
                 style={{ width: imageSize, height: imageSize}}
             />
+            </TapGestureHandler>
         </View>
     )
 }
