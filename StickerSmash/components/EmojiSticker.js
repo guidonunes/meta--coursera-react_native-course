@@ -11,6 +11,21 @@ const AnimatedImage = Animated.createAnimatedComponent(Image);
 const AnimatedView = Animated.createAnimatedComponent(View);
 
 export default function EmojiSticker({ imageSize, stickerSource }) {
+  const translateX = useSharedValue(0);
+  const translateY = useSharedValue(0);
+  
+  const onDrag = useAnimatedGestureHandler({
+    onStart: (event, context) => {
+      context.translateX = translateX.value;
+      context.translateY = translateY.value;
+    },
+    onActive: (event, context) => {
+      translateX.value = event.translationX + context.translateX;
+      translateY.value = event.translationY + context.translateY;
+    }
+  })
+
+
   const scaleImage = useSharedValue(imageSize);
 
   const onDoubleTap = useAnimatedGestureHandler({
@@ -29,6 +44,7 @@ export default function EmojiSticker({ imageSize, stickerSource }) {
   });
 
   return (
+    <PanGestureHandler onGestureEvent={onDrag}>
     <AnimatedView style={{ top: -350 }}>
       <TapGestureHandler onGestureEvent={onDoubleTap} numberOfTaps={2}>
         <AnimatedImage
@@ -38,6 +54,7 @@ export default function EmojiSticker({ imageSize, stickerSource }) {
         />
       </TapGestureHandler>
     </AnimatedView>
+    </PanGestureHandler>
   );
 }
 
