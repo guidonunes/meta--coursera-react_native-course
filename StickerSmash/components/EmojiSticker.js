@@ -8,6 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 const AnimatedImage = Animated.createAnimatedComponent(Image);
+const AnimatedView = Animated.createAnimatedComponent(View);
 
 export default function EmojiSticker({ imageSize, stickerSource }) {
   const scaleImage = useSharedValue(imageSize);
@@ -28,7 +29,7 @@ export default function EmojiSticker({ imageSize, stickerSource }) {
   });
 
   return (
-    <View style={{ top: -350 }}>
+    <AnimatedView style={{ top: -350 }}>
       <TapGestureHandler onGestureEvent={onDoubleTap} numberOfTaps={2}>
         <AnimatedImage
           source={stickerSource}
@@ -36,7 +37,7 @@ export default function EmojiSticker({ imageSize, stickerSource }) {
           style={[imageStyle, { width: imageSize, height: imageSize }]}
         />
       </TapGestureHandler>
-    </View>
+    </AnimatedView>
   );
 }
 
