@@ -1,9 +1,9 @@
 import { View, Image } from 'react-native';
 import { PanGestureHandler, TapGestureHandler } from 'react-native-gesture-handler';
 import Animated, {
+  useAnimatedStyle,
   useSharedValue,
   useAnimatedGestureHandler,
-  useAnimatedStyle,
   withSpring,
 } from 'react-native-reanimated';
 
@@ -14,14 +14,14 @@ export default function EmojiSticker({ imageSize, stickerSource }) {
   const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);
   const scaleImage = useSharedValue(imageSize);
-  
+
   const imageStyle = useAnimatedStyle(() => {
     return {
       width: withSpring(scaleImage.value),
       height: withSpring(scaleImage.value),
     };
   });
-  
+
   const onDoubleTap = useAnimatedGestureHandler({
     onActive: () => {
       if (scaleImage.value !== imageSize * 2) {
@@ -38,35 +38,35 @@ export default function EmojiSticker({ imageSize, stickerSource }) {
     onActive: (event, context) => {
       translateX.value = event.translationX + context.translateX;
       translateY.value = event.translationY + context.translateY;
-    }
+    },
   });
 
-const containerStyle = useAnimatedStyle(() => {
-  return {
-    transform: [
-      {
-        translateX: translateX.value,
-      },
-      {
-        translateY: translateY.value,
-      },
-    ],
-  };
-});
+  const containerStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateX: translateX.value,
+        },
+        {
+          translateY: translateY.value,
+        },
+      ],
+    };
+  });
 
   return (
     <PanGestureHandler onGestureEvent={onDrag}>
-    <AnimatedView style={{ containerStyle, top: -350 }}>
-      <TapGestureHandler onGestureEvent={onDoubleTap} numberOfTaps={2}>
-        <AnimatedImage
-          source={stickerSource}
-          resizeMode="contain"
-          style={[imageStyle, { width: imageSize, height: imageSize }]}
-        />
-      </TapGestureHandler>
-    </AnimatedView>
+      <AnimatedView style={[containerStyle, { top: -350 }]}>
+        <TapGestureHandler onGestureEvent={onDoubleTap} numberOfTaps={2}>
+          <AnimatedImage
+            source={stickerSource}
+            resizeMode="contain"
+            style={[imageStyle, { width: imageSize, height: imageSize }]}
+          />
+        </TapGestureHandler>
+      </AnimatedView>
     </PanGestureHandler>
   );
 }
 
-//add pan gesture and review the emoji not springing
+//review this code. Emoji cannot be dragged
