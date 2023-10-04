@@ -23,6 +23,9 @@ export default function App() {
   const [showAppOptions, setShowAppOptions] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
+  const imageRef = useRef(null);
+
+
   if(status === null) {
     requestPermission();
   }
@@ -56,7 +59,6 @@ export default function App() {
       if (localUri) {
         alert("Saved!")
       }
-
     } catch (e) {
       console.log(e)
     }
@@ -74,9 +76,11 @@ export default function App() {
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style={styles.imageContainer}>
-        <View ref={imageRef} collapsable={false}>
-        <ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage} />
-        {pickedEmoji !== null ? <EmojiSticker imageSize={40} stickerSource={pickedEmoji} /> : null}
+      <View ref={imageRef} collapsable={false}>
+          <ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage} />
+          {pickedEmoji !== null ? (
+            <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />
+          ) : null}
         </View>
       </View>      
       {showAppOptions ? (
