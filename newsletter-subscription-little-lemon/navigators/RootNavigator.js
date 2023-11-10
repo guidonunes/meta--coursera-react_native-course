@@ -1,4 +1,5 @@
 import * as React from "react";
+import { NavigationContainer} from '@react-navigation/native'
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import SubscribeScreen from "../screens/SubscribeScreen";
@@ -7,9 +8,12 @@ const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => {
   return (
-    <Stack.Navigator>
-      {/* Set up stack navigation to move between welcome screen and subscribe screen here */}
+    <NavigationContainer>
+    <Stack.Navigator initialRouteName="Welcome">
+      <Stack.Screen name="Welcome" component={WelcomeScreen}/>
+      <Stack.Screen name="Menu" component={SubscribeScreen} />
     </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
