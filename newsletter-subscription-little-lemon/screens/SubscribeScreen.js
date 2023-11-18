@@ -1,10 +1,25 @@
 import React, { useState } from 'react';
-import { View, Text, Image, Pressable, StyleSheet, Dimensions, TextInput } from 'react-native';
+import { View, Text, Image, Pressable, StyleSheet, Dimensions, TextInput, Alert } from 'react-native';
+import { validateEmail } from '../utils';
 
 const SubscribeScreen = () => {
   const [subscribeButton, setSubscribeButton] = useState(false);
   const [email,setEmail] = useState('');
 
+  const handleSubscribe = () => {
+    if (email) {
+      // Display an alert to confirm the subscription
+      Alert.alert(
+        'Thanks for subscribing, stay tuned!',
+        [{text: 'OK', onPress: () => console.log('OK Pressed')}]
+      );
+    } else {
+      Alert.alert('Error', 'Please, enter a valid email address')
+    }
+  }
+
+
+  const isEmailValid = validateEmail(email);
   // Add subscribe screen code here
   return (
     <View style={styles.container}>
@@ -23,6 +38,7 @@ const SubscribeScreen = () => {
         style={styles.button}
         onPress={() => {
           setSubscribeButton(!subscribeButton);
+          handleSubscribe();
         }}
       >
         <Text style={styles.buttonText}>Subscribe</Text>
@@ -61,7 +77,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginVertical: 10,
     paddingHorizontal: 10,
-    color: 'grey',
   },
   button: {
     backgroundColor: '#495E57',
