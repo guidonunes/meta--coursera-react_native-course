@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { View, Text, Image, Pressable, StyleSheet, Dimensions, TextInput, Alert } from 'react-native';
 import { validateEmail } from '../utils';
 
@@ -7,16 +7,22 @@ const SubscribeScreen = () => {
   const [email,setEmail] = useState('');
 
   const handleSubscribe = () => {
-    if (email) {
-      // Display an alert to confirm the subscription
-      Alert.alert(
-        'Thanks for subscribing, stay tuned!',
-        [{text: 'OK', onPress: () => console.log('OK Pressed')}]
-      );
+    if (!validateEmail(email)) {
+      Alert.alert('Error', 'Please enter a valid email address');
     } else {
-      Alert.alert('Error', 'Please, enter a valid email address')
+      Alert.alert('Thanks for subscribing, stay tuned!', null, [
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
+      ]);
+      setEmail('');
+      setSubscribeButton(false);
     }
-  }
+  };
+
+  useEffect(() => {
+    if (subscribeButton) {
+      handleSubscribe();
+    }
+  }, [subscribeButton]);
 
 
   const isEmailValid = validateEmail(email);
@@ -35,12 +41,15 @@ const SubscribeScreen = () => {
       />
       
       <Pressable
-        style={styles.button}
-        onPress={() => {
-          setSubscribeButton(!subscribeButton);
-          handleSubscribe();
-        }}
-      >
+  style={({ pressed }) => [
+    styles.button,
+    {
+      backgroundColor: pressed ? '#3E4B46' : '#495E57',
+    },
+     ]}
+    onPress={() => setSubscribeButton(true)}
+    disabled={!isEmailValid}
+    >
         <Text style={styles.buttonText}>Subscribe</Text>
       </Pressable>
     </View>
