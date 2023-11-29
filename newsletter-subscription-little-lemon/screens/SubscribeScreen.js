@@ -40,7 +40,7 @@ const SubscribeScreen = () => {
       <Pressable
         style={{
           ...styles.button,
-          backgroundColor: isEmailValid ? '#495E57' : '#3E4B46',
+          backgroundColor: isEmailValid ? '#ADAEB3' : '#495E57',
         }}
         onPress={() => handleSubscribe()}
         disabled={!isEmailValid}
