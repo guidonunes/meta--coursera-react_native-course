@@ -3,8 +3,13 @@ import { View, Text, Image, Pressable, StyleSheet, Dimensions, TextInput, Alert 
 import { validateEmail } from '../utils';
 
 const SubscribeScreen = () => {
-  const [subscribeButton, setSubscribeButton] = useState(false);
-  const [email,setEmail] = useState('');
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    // Check for a valid email on each change and update the button style accordingly
+    const isValid = validateEmail(email);
+    console.log('Email Valid:', isValid);
+  }, [email]);
 
   const handleSubscribe = () => {
     if (!validateEmail(email)) {
@@ -14,19 +19,11 @@ const SubscribeScreen = () => {
         { text: 'OK', onPress: () => console.log('OK Pressed') },
       ]);
       setEmail('');
-      setSubscribeButton(false);
     }
   };
 
-  useEffect(() => {
-    if (subscribeButton) {
-      handleSubscribe();
-    }
-  }, [subscribeButton]);
-
-
   const isEmailValid = validateEmail(email);
-  // Add subscribe screen code here
+
   return (
     <View style={styles.container}>
       <Image style={styles.logo} source={require('../assets/little-lemon-logo-grey.png')} />
@@ -41,15 +38,13 @@ const SubscribeScreen = () => {
       />
       
       <Pressable
-  style={({ pressed }) => [
-    styles.button,
-    {
-      backgroundColor: pressed ? '#3E4B46' : '#495E57',
-    },
-     ]}
-    onPress={() => setSubscribeButton(true)}
-    disabled={!isEmailValid}
-    >
+        style={{
+          ...styles.button,
+          backgroundColor: isEmailValid ? '#495E57' : '#3E4B46',
+        }}
+        onPress={() => handleSubscribe()}
+        disabled={!isEmailValid}
+      >
         <Text style={styles.buttonText}>Subscribe</Text>
       </Pressable>
     </View>
