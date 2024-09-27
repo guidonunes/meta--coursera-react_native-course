@@ -14,3 +14,23 @@ The main goals of this repository are to:
 * Implement Version Control with GitHub: Develop skills in managing code versions and collaborating on projects using GitHub.
 * Build a Project-Based Portfolio: Create a portfolio of projects that showcases my skills and can impress potential employers.
 
+
+## Projects Included
+
+This repository features a variety of projects that reflect the skills learned throughout the course:
+
+## 1. Mobile Application Development
+
+* Description: Projects demonstrating the capabilities of React Native for building mobile applications.
+* Key Features: Navigation, user authentication, and integration with APIs.
+
+## 2. Web Application Development
+
+* Description: React-based projects that showcase web development skills.
+* Key Features: Responsive design, state management, and routing.
+
+## 3. UI/UX Design
+
+* Description: Projects focusing on user interface and user experience design.
+* Key Features: Prototyping with Figma and implementing accessibility best practices.
+
